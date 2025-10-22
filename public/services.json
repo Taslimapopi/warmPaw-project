@@ -7,7 +7,7 @@
     "price": 25,
     "rating": 4.9,
     "slotsAvailable": 4,
-    "description": "Our Winter Coat Fitting for Dogs service ensures your furry friend stays warm and stylish...",
+    "description": "Ensure your furry friend is winter-ready with our Winter Coat Fitting for Dogs service. At PawCare Studio, we believe that warmth should never come at the cost of comfort or style. Our experts provide custom fittings for coats designed specifically for your dog's breed, size, and activity level. We use thermal-insulated yet breathable fabrics to protect your pet from wind, snow, and sub-zero temperatures, all while keeping them looking adorable. During the session, we assess body measurements, posture, and walking behavior to recommend the perfect coat cut and closure type—whether it's velcro, zip, or harness-compatible. Plus, we offer care tips to keep the coat clean and lasting all season. Ideal for puppies, seniors, or dogs with thin fur, this service ensures that your dog will not only stay warm but feel confident strutting through the snow. Slots are limited due to high demand each winter season.",
     "image": "https://i.ibb.co.com/B5LyvP2b/winter-coat-for-pet.jpg",
     "category": "Clothing",
     "categoryId": 1
@@ -20,7 +20,8 @@
     "price": 28,
     "rating": 4.8,
     "slotsAvailable": 3,
-    "description": "At FuzzyTail Knits, we create handmade, custom-fit winter sweaters for dogs and cats...",
+    "description": "FuzzyTail Knits offers handmade, custom-fit winter sweaters that combine cozy warmth with artistic flair for your pet. Each sweater is individually knitted using hypoallergenic, soft, and thermal yarns ideal for colder climates. We begin by gathering your pet's precise measurements, including chest, neck, and length, to ensure a snug but comfortable fit. Choose from dozens of winter-themed patterns, color combinations, and even name embroidery for that personal touch. Our expert knitters craft sweaters designed to allow full range of motion, whether your pet is lounging indoors or enjoying a brisk walk. Great for both dogs and cats, our sweaters are especially beneficial for smaller breeds, senior pets, or those with medical conditions that require extra warmth. We also offer matching human-pet sweater sets on request. With attention to both function and fashion, this service provides a unique winter garment that keeps your pet warm, stylish, and ready for compliments.",
+
     "image": "https://i.ibb.co.com/mCKrXtn0/Custom-Winter-Sweater-Knitting.jpg",
     "category": "Clothing",
     "categoryId": 1
@@ -33,7 +34,8 @@
     "price": 30,
     "rating": 4.8,
     "slotsAvailable": 3,
-    "description": "Winter Grooming & Paw Treatment is a premium service designed to protect your pet’s skin...",
+    "description": "Our Winter Grooming & Paw Treatment at CozyPets Grooming offers a full-body care experience tailored for cold months. Dry, flaky skin and cracked paw pads are common during winter, especially after exposure to ice, salt, and snow. Our service begins with a warm water bath using moisturizing, winter-specific shampoos that soothe irritated skin and restore hydration. After drying with gentle warm air, we trim the coat to reduce matting while preserving insulation. We also focus on paw care—trimming fur between pads to prevent ice buildup and applying a protective wax balm that shields paws from salt and ice-melt chemicals. Nail trimming, ear cleaning, and a gentle brushing session are also included. Ideal for dogs of all breeds and coat types, this treatment helps prevent skin issues and keeps your pet feeling fresh, clean, and comfortable all season long. Give your pet the TLC they need this winter with our popular seasonal grooming package.",
+
     "image": "https://i.ibb.co.com/MyDh82VH/Winter-Grooming-Paw-Treatment.webp",
     "category": "Grooming",
     "categoryId": 2
@@ -156,4 +158,3 @@
     "categoryId": 5
   }
 ]
-

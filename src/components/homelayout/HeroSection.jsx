@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 
 const HeroSection = () => {
   return (
-    <div className="flex flex-col justify-center items-center bg-gradient-to-r from-orange-100 via-pink-100 to-yellow-100">
+    <div className="flex flex-col justify-center items-center bg-gradient-to-r from-orange-100 via-pink-100 to-yellow-100 mt-4 pt-4">
       <section className="min-h-[40vh] flex flex-col justify-center items-center text-center px-6 ">
         <h1 className="text-4xl md:text-2xl font-bold text-gray-800">
           Keep Your Furry Friends Cozy This Winter

@@ -3,6 +3,8 @@ import NavBar from '../components/homelayout/NavBar';
 import HeroSection from '../components/homelayout/HeroSection';
 import Categories from '../components/homelayout/Categories';
 import Services from '../components/homelayout/Services';
+import { Outlet } from 'react-router';
+import Footer from '../components/Footer';
 
 
 const HomeLayout = () => {
@@ -10,13 +12,15 @@ const HomeLayout = () => {
         <div>
             <header>
                 <NavBar></NavBar>
-                <HeroSection></HeroSection>
+                
             </header>
             <main>
+                <HeroSection></HeroSection>
                 <Categories></Categories>
                 <div className='w-11/12 grid grid-cols-12 *:border mx-auto'>
                 <div className='col-span-9' >
-                <Services></Services>
+                    <Outlet></Outlet>
+                
 
                 </div>
                 <div className='col-span-3'>
@@ -25,7 +29,9 @@ const HomeLayout = () => {
 
                 </div>
             </main>
-            <footer></footer>
+            <footer>
+                <Footer></Footer>
+            </footer>
         </div>
     );
 };

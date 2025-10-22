@@ -5,6 +5,9 @@ import Services from "../components/homelayout/Services";
 import AuthLayout from "../lauOuts/AuthLayout";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
+import ServiceDetails from "../pages/ServiceDetails";
+import Allservices from "../components/Allservices";
+import ForgetPassword from "../pages/ForgetPassword";
 
 
 
@@ -14,9 +17,13 @@ const router = createBrowserRouter([
     element: <HomeLayout></HomeLayout>,
     children: [
         {
-            path:"",
+            index:true,
             element:<Home></Home>,
 
+        },
+        {
+          path:'/services',
+          element:<Allservices></Allservices>
         },
       {
         path: "/category/:categoryId",
@@ -37,6 +44,10 @@ const router = createBrowserRouter([
             path:"/auth/register",
             element:<SignUp></SignUp>
         },
+        {
+          path: '/auth/forgetpassword',
+          element: <ForgetPassword></ForgetPassword>
+        },
     ]
   },
   {
@@ -47,6 +58,10 @@ const router = createBrowserRouter([
     path: "/myprofile",
     element: <h2>my profile</h2>,
   },
+  {
+    path:'/service-details/:id',
+    element: <ServiceDetails></ServiceDetails>
+  }
 ]);
 
 export default router;

@@ -1,16 +1,44 @@
-import React, { use } from "react";
+import React, { use, useRef } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../Provider/Authprovider";
+import { useNavigate } from "react-router";
 
 const Login = () => {
-    const {logIn} = use(AuthContext)
-    const handleLogin = (e) =>{
-        e.preventDefault();
-        const form = e.target
-        const email = form.email.value
-        const password = form.password.value
-        logIn(email,password)
+  const emailRef = useRef();
+  const { logIn, googleLogIn } = use(AuthContext);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    logIn(email, password);
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogIn()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const navigate = useNavigate();
+
+  const handleForgetPassword = () => {
+    const email = emailRef.current.value;
+    console.log(email);
+    if (!email) {
+      alert("Please enter your email before proceeding!");
+      return;
     }
+
+    navigate("/auth/forgetpassword", {
+      state: { email }, // 👈 এখানে email পাঠানো হলো
+    });
+  };
+
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -22,6 +50,7 @@ const Login = () => {
             <fieldset className="fieldset">
               <label className="label">Email</label>
               <input
+                ref={emailRef}
                 type="email"
                 name="email"
                 className="input"
@@ -37,14 +66,27 @@ const Login = () => {
                 required
               />
               <div>
-                <a className="link link-hover">Forgot password?</a>
+                <button
+                  type="button"
+                  onClick={handleForgetPassword}
+                  className="link link-hover text-sm text-orange-600"
+                >
+                  Forgot password?
+                </button>
               </div>
               {/* {error && <p className="text-red-400 text-sm">{error}</p>} */}
 
-              <button type="submit" className="btn btn-accent text-white font-semibold mt-4">
+              <button
+                type="submit"
+                className="btn btn-accent text-white font-semibold mt-4"
+              >
                 Login
               </button>
-              <button className="btn bg-gradient-to-r from-orange-500 to-yellow-500 text-white border-[#e5e5e5]">
+              <Link
+                to="/"
+                onClick={handleGoogleLogin}
+                className="btn bg-gradient-to-r from-orange-500 to-yellow-500 text-white border-[#e5e5e5]"
+              >
                 <svg
                   aria-label="Google logo"
                   width="16"
@@ -73,7 +115,7 @@ const Login = () => {
                   </g>
                 </svg>
                 Login with Google
-              </button>
+              </Link>
               <p className="font-semibold text-center pt-5">
                 Dont’t Have An Account ?{" "}
                 <Link className="text-secondary" to="/auth/register">

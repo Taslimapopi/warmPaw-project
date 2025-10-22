@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const ServiceCard = ({ service }) => {
   return (
@@ -31,12 +32,12 @@ const ServiceCard = ({ service }) => {
         </div>
 
         {/* Button */}
-        <a
-          href="#"
+        <Link to={`service-details/${service.serviceId}`}
+          
           className="inline-block px-5 py-2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-semibold hover:scale-105 transition-transform duration-300 shadow-md"
         >
           View Details
-        </a>
+        </Link>
       </div>
     </div>
   );
