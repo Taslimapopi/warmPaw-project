@@ -1,35 +1,44 @@
-import React, { use } from 'react';
-import { Link } from 'react-router';
-import { AuthContext } from '../Provider/Authprovider';
+import React, { use } from "react";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../Provider/Authprovider";
+import { updateProfile } from "firebase/auth";
 
 const SignUp = () => {
- const {createUser,setUser} = use(AuthContext)
+  const { createUser, setUser } = use(AuthContext);
+  const navigate = useNavigate()
 
-  const handleSignUp = (e) =>{
+  const handleSignUp = (e) => {
     e.preventDefault();
-    const form  = e.target;
-    const name = form.name.value
-    const email = form.email.value
-    const password = form.password.value
-    const photo = form.photo.value
+    const form = e.target;
+    const displayName = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photoURL = form.photo.value;
 
-    console.log(name,email,photo,password)
-    createUser(email,password)
-    .then(result=>{
-     const user = result.user
-      setUser(user)
-    })
-    .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode)
-    alert('errorcode')
-  });
+    console.log(displayName, email, photoURL, password);
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        updateProfile(user, { displayName, photoURL })
+          .then(() => {
+            alert('profile updated')
+          })
+          .catch((error) => {
+            alert(error)
+          });
+        setUser(user);
+        navigate('/')
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        alert("errorcode");
+      });
+  };
 
-  } 
-
-    return (
-        <div className="flex justify-center items-center min-h-screen">
+  return (
+    <div className="flex justify-center items-center min-h-screen">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <h2 className="font-semibold text-2xl text-center mt-5">
           Register your account
@@ -45,7 +54,7 @@ const SignUp = () => {
                 className="input"
                 placeholder="Name"
                 required
-                />
+              />
               {/* photourl */}
               <label className="label">Photo URL</label>
               <input
@@ -88,7 +97,7 @@ const SignUp = () => {
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default SignUp;

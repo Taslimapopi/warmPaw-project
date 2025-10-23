@@ -8,23 +8,21 @@ import SignUp from "../pages/SignUp";
 import ServiceDetails from "../pages/ServiceDetails";
 import Allservices from "../components/Allservices";
 import ForgetPassword from "../pages/ForgetPassword";
-
-
+import MyProfile from "../pages/MyProfile";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
     children: [
-        {
-            index:true,
-            element:<Home></Home>,
-
-        },
-        {
-          path:'/services',
-          element:<Allservices></Allservices>
-        },
+      {
+        index: true,
+        element: <Home></Home>,
+      },
+      {
+        path: "/services",
+        element: <Allservices></Allservices>,
+      },
       {
         path: "/category/:categoryId",
         element: <Services></Services>,
@@ -35,33 +33,34 @@ const router = createBrowserRouter([
   {
     path: "/auth",
     element: <AuthLayout></AuthLayout>,
-    children:[
-        {
-            path:'/auth/login',
-            element:<Login></Login>
-        },
-        {
-            path:"/auth/register",
-            element:<SignUp></SignUp>
-        },
-        {
-          path: '/auth/forgetpassword',
-          element: <ForgetPassword></ForgetPassword>
-        },
-    ]
+    children: [
+      {
+        path: "/auth/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/auth/register",
+        element: <SignUp></SignUp>,
+      },
+      {
+        path: "/auth/forgetpassword",
+        element: <ForgetPassword></ForgetPassword>,
+      },
+      {
+        path: "/auth/myprofile",
+        element: <MyProfile></MyProfile>,
+      },
+    ],
   },
   {
     path: "/*",
     element: <h2>err0r404</h2>,
   },
+
   {
-    path: "/myprofile",
-    element: <h2>my profile</h2>,
+    path: "/service-details/:id",
+    element: <ServiceDetails></ServiceDetails>,
   },
-  {
-    path:'/service-details/:id',
-    element: <ServiceDetails></ServiceDetails>
-  }
 ]);
 
 export default router;

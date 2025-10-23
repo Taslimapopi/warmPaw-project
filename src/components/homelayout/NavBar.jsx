@@ -70,7 +70,7 @@ const NavBar = () => {
             <NavLink to="/category/0">Services</NavLink>
           </li>
           <li className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">
-            <NavLink to="/myprofile">My Profile</NavLink>
+            <NavLink to="/auth/myprofile">My Profile</NavLink>
           </li>
         </ul>
       </div>
