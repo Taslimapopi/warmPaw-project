@@ -3,6 +3,7 @@ import { updateProfile } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
 import { AuthContext } from "../Provider/Authprovider";
 import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 const Updateprofile = () => {
   const { user } = use(AuthContext);
@@ -19,11 +20,11 @@ const Updateprofile = () => {
       photoURL: photoURL,
     })
       .then(() => {
-        alert("✅ Profile updated successfully!");
+        toast.success("✅ Profile updated successfully!");
         navigate('/auth/myprofile')
       })
       .catch((error) => {
-        console.error("❌ Update failed:", error);
+        toast.error("❌ Update failed:", error);
       });
   };
 

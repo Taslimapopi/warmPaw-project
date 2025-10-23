@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import ServiceCard from "../ServiceCard";
+import toast from "react-hot-toast";
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -19,10 +20,10 @@ const Services = () => {
           setServices(filtered);
         }
       })
-      .catch((err) => console.error("Error loading services:", err));
+      .catch((err) => toast.error("Error loading services:", err));
   }, [categoryId]);
 
-  console.log(categoryId, services);
+  // console.log(categoryId, services);
 
   return (
     <div className="min-h-screen py-10 bg-base-200">

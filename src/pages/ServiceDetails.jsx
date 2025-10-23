@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import NavBar from "../components/homelayout/NavBar";
+import toast from "react-hot-toast";
 
 const ServiceDetails = () => {
   const [singleService, setSingleService] = useState(null);
@@ -13,14 +14,13 @@ const ServiceDetails = () => {
         setSingleService(singleData);
       });
   }, [id]);
-  console.log(id, singleService);
 
   if (!singleService) {
     return <p className="text-center my-10">Loading service details...</p>;
   }
 
   const handleBook = () =>{
-    alert('succesfully booked')
+    toast.success('successfully booked')
   }
 
   return (

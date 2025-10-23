@@ -21,19 +21,18 @@ const Login = () => {
     logIn(email, password)
     .then((result) => {
       const user = result.user
-        console.log(user);
+
         navigate(`${location.state? location.state : '/'}`)
         toast.success('Successfully logged in')
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(error);
       });
   };
 
   const handleGoogleLogin = () => {
     googleLogIn()
       .then((result) => {
-        console.log(result.user);
         toast.success('Successfully logged in')
       })
       .catch((error) => {
@@ -45,7 +44,7 @@ const Login = () => {
 
   const handleForgetPassword = () => {
     const email = emailRef.current.value;
-    console.log(email);
+  
     if (!email) {
       toast("Please enter your email before proceeding!");
       return;

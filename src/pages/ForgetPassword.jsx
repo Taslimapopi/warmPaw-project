@@ -6,11 +6,7 @@ const ForgetPassword = () => {
   const emailFromLogin = location.state?.email 
   console.log(emailFromLogin)
 
-//   const handleReset = (e) => {
-//     e.preventDefault();
-//     const email = e.target.email.value;
-//     console.log("Reset link sent to:", email);
-//   };
+
 
   return (
     <div className="flex justify-center items-center min-h-screen">

@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/Authprovider";
 import { updateProfile } from "firebase/auth";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
   const { createUser, setUser } = use(AuthContext);
@@ -20,13 +21,12 @@ const SignUp = () => {
     const isLongEnough = password.length >= 6;
 
     if (!hasUppercase || !hasLowercase || !isLongEnough) {
-      alert(
+      toast.error(
         "❌ Password must contain:\n- At least one uppercase letter\n- At least one lowercase letter\n- Minimum 6 characters"
       );
       return;
     }
 
-    console.log(displayName, email, photoURL, password);
     createUser(email, password)
       .then((result) => {
         const user = result.user;
@@ -34,17 +34,17 @@ const SignUp = () => {
           .then(() => {
           })
           .catch((error) => {
-            alert(error);
+            toast.error(error);
           });
-        alert('successfully completeed signup')
+        toast.success('successfully completed signup')
         setUser(user);
         navigate("/");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode);
-        alert("errorcode");
+    
+        toast.error("errorcode");
       });
   };
 
