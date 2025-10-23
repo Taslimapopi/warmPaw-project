@@ -5,12 +5,13 @@ import App from './App.jsx'
 import { RouterProvider } from 'react-router'
 import router from './routes/router.jsx'
 import Authprovider from './Provider/Authprovider.jsx'
+import { Toaster } from 'react-hot-toast'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Authprovider>
       <RouterProvider router={router }></RouterProvider>
     </Authprovider>
-    
+    <Toaster />
   </StrictMode>,
 )

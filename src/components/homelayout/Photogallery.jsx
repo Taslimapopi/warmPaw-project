@@ -20,7 +20,7 @@ const PhotoGallery = () => {
     <section className="py-14 bg-gradient-to-r from-orange-50 to-yellow-50">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-orange-600 mb-10 underline underline-offset-8 decoration-yellow-400">
-          Pet Winter Photo Gallery
+          Pet Photo Gallery
         </h2>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">

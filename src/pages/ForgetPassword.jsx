@@ -37,7 +37,7 @@ const ForgetPassword = () => {
                 required
               />
 
-          <Link to='https://www.google.com/search?q=gmail&pws=0&gl=us&gws_rd=cr'
+          <Link to='https://mail.google.com/mail/u/0/#inbox'
             type="submit"
             className="btn w-full mt-5 bg-gradient-to-r from-orange-500 to-yellow-500 text-white border-none"
           >

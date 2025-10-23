@@ -3,16 +3,18 @@ import logo from "../../assets/image.png";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../Provider/Authprovider";
 import userIcon from "../../assets/user.png";
+import toast from "react-hot-toast";
 
 const NavBar = () => {
   const { user, logOut } = use(AuthContext);
   const handleLogout = () => {
     logOut()
       .then(() => {
-        alert("Sign-out successful.");
+        toast.success('Sign-out successful')
+        
       })
       .catch((error) => {
-        console.log(error);
+        toast.error('error happens')
       });
   };
   return (
@@ -68,7 +70,7 @@ const NavBar = () => {
             <NavLink to="/">Home</NavLink>
           </li>
           <li className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">
-            <NavLink to="/category/0">Services</NavLink>
+            <NavLink to="/services">Services</NavLink>
           </li>
           <li className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">
             <NavLink to="/auth/myprofile">My Profile</NavLink>

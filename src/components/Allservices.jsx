@@ -1,17 +1,43 @@
-import React, { use } from "react";
-import ServiceCard from "./ServiceCard";
-import { Link, Navigate } from "react-router";
+import React from "react";
 
-const servicePromise = fetch("/services.json").then((res) => res.json());
+import { useEffect, useState } from "react";
+import ServiceCard from "./ServiceCard";
+import { useSpring, animated } from '@react-spring/web';
+
 
 const Allservices = () => {
-  const allservices = use(servicePromise);
-  console.log(allservices);
+  const [services, setServices] = useState([]);
+  
+    useEffect(() => {
+      fetch("/services.json")
+        .then((res) => res.json())
+        .then((data) => setServices(data.slice(0, 6)));
+    }, []);
+
+    const styles = useSpring({
+        from: { transform: 'scale(0.8)', color: '#f97316' }, // orange
+        to: async (next) => {
+          await next({ transform: 'scale(1.2)', color: '#facc15' }); // yellow
+          await next({ transform: 'scale(1)', color: '#22c55e' }); // green
+        },
+        loop: true,
+        config: { tension: 180, friction: 12 },
+      });
+
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 justify-items-center px-4">
-      {/* <Navigate to='/category/0'></Navigate> */}
-      
-    </div>
+
+    <div className="max-w-6xl mx-auto p-6">
+          <animated.div style={styles} className="text-3xl font-bold mb-6 text-center">
+            🐾 Our All Winter Pet Care Services
+        </animated.div>;
+    
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service) => (
+              <ServiceCard key={service.serviceId} service={service} />
+            ))}
+          </div>
+        </div>
   );
 };
 

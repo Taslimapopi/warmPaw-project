@@ -1,29 +1,43 @@
 import React, { use, useRef, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { AuthContext } from "../Provider/Authprovider";
 import { useNavigate } from "react-router";
 import { FaRegEye } from "react-icons/fa";
 import { IoEyeOffSharp } from "react-icons/io5";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
   const emailRef = useRef();
   const { logIn, googleLogIn } = use(AuthContext);
+  const location = useLocation()
+
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    logIn(email, password);
+    logIn(email, password)
+    .then((result) => {
+      const user = result.user
+        console.log(user);
+        navigate(`${location.state? location.state : '/'}`)
+        toast.success('Successfully logged in')
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleGoogleLogin = () => {
     googleLogIn()
       .then((result) => {
         console.log(result.user);
+        toast.success('Successfully logged in')
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(error)
       });
   };
 
@@ -33,12 +47,12 @@ const Login = () => {
     const email = emailRef.current.value;
     console.log(email);
     if (!email) {
-      alert("Please enter your email before proceeding!");
+      toast("Please enter your email before proceeding!");
       return;
     }
 
     navigate("/auth/forgetpassword", {
-      state: { email }, // 👈 এখানে email পাঠানো হলো
+      state: { email }, 
     });
   };
 
@@ -66,7 +80,7 @@ const Login = () => {
                 required
               />
               <div className="relative">
-                <label className="label">Password</label>
+                <label className="label z-5 text-left">Password</label>
               <input
                 type={showPassword? 'text' : 'password'}
                 name="password"
@@ -74,7 +88,7 @@ const Login = () => {
                 placeholder="Password"
                 required
               />
-              <button onClick={handleShowPassword} className="btn btn-xs absolute right-5 top-6">
+              <button onClick={handleShowPassword} className="btn btn-xs absolute right-5 top-6 z-10">
                 {
                   showPassword? <IoEyeOffSharp />: <FaRegEye /> 
                 }
