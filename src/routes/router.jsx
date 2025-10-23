@@ -9,6 +9,7 @@ import ServiceDetails from "../pages/ServiceDetails";
 import Allservices from "../components/Allservices";
 import ForgetPassword from "../pages/ForgetPassword";
 import MyProfile from "../pages/MyProfile";
+import Updateprofile from "../pages/Updateprofile";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
         path: "/auth/myprofile",
         element: <MyProfile></MyProfile>,
       },
+      {
+        path:"/auth/updateProfile",
+        element: <Updateprofile></Updateprofile>
+      }
     ],
   },
   {

@@ -17,7 +17,7 @@ const MyProfile = () => {
         <h2 className="text-2xl font-bold mt-4">{user?.displayName || 'Anonymous User'}</h2>
         <p className="text-gray-600">{user?.email}</p>
         <Link
-          to="/auth/register"
+          to="/auth/updateProfile"
           className="mt-3 inline-block text-orange-600 hover:underline font-medium"
         >
           ✏️ Update Profile
