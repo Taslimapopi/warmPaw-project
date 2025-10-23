@@ -6,6 +6,9 @@ import toast from "react-hot-toast";
 const ServiceDetails = () => {
   const [singleService, setSingleService] = useState(null);
   const { id } = useParams();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
   useEffect(() => {
     fetch("/services.json")
       .then((res) => res.json())
@@ -19,13 +22,16 @@ const ServiceDetails = () => {
     return <p className="text-center my-10">Loading service details...</p>;
   }
 
-  const handleBook = () =>{
-    toast.success('successfully booked')
-  }
+  const handleBook = (e) => {
+    e.preventDefault()
+    toast.success("successfully booked");
+    setName("");
+    setEmail("");
+  };
 
   return (
     <div>
-        <NavBar></NavBar>
+      <NavBar></NavBar>
       <div className="max-w-3xl mx-auto my-10 p-6 bg-white shadow-lg rounded-2xl">
         <img
           src={singleService.image ? singleService.image : ""}
@@ -61,21 +67,41 @@ const ServiceDetails = () => {
             </p>
           </div>
           <div className="">
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+            <form onSubmit={handleBook}>
+              <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
               <legend className="fieldset-legend">Book Service</legend>
 
-              <label className="label" required>Name</label>
-              <input type="text" className="input" placeholder="Name" required/>
+              <label className="label" required>
+                Name
+              </label>
+              <input
+                type="text"
+                className="input"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
               <label className="label">Email</label>
-              <input type="email" className="input" placeholder="Email" required />
+              <input
+                type="email"
+                className="input"
+                name="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
 
-              <Link
-                onClick={handleBook}
+              <button
+                type="submit"
                 className="btn mt-6 bg-gradient-to-r from-orange-500 to-yellow-500 text-white border-none"
               >
                 Book Now
-              </Link>
+              </button>
             </fieldset>
+            </form>
+            
           </div>
         </div>
       </div>

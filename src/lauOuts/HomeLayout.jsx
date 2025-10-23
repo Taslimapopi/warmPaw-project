@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import Veteran from '../components/Veteran';
 import WinterCareTips from '../components/homelayout/WinterCareTips';
 import PhotoGallery from '../components/homelayout/Photogallery';
+import CustomerTestimonials from '../components/homelayout/CustomerTestimonials';
 
 
 const HomeLayout = () => {
@@ -20,7 +21,7 @@ const HomeLayout = () => {
             <main>
                 <HeroSection></HeroSection>
                 <Categories></Categories>
-                <div className='w-11/12 grid grid-cols-12 mx-auto'>
+                <div className='md:w-11/12 grid grid-cols-12 mx-auto'>
                 <div className='col-span-9' >
                     <Outlet></Outlet>
                 
@@ -33,6 +34,7 @@ const HomeLayout = () => {
                 </div>
                 <WinterCareTips></WinterCareTips>
                 <PhotoGallery></PhotoGallery>
+                <CustomerTestimonials></CustomerTestimonials>
             </main>
             <footer>
                 <Footer></Footer>

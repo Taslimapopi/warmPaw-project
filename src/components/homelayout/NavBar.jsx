@@ -17,11 +17,12 @@ const NavBar = () => {
         toast.error('error happens')
       });
   };
-  return (
-    <div className="navbar bg-base-200 shadow-sm">
+   return (
+    <div className="navbar bg-base-200 bg-blue-200 shadow-sm px-4">
+      {/* Left: Logo + Mobile Dropdown */}
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <button tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -29,59 +30,66 @@ const NavBar = () => {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              {" "}
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
             </svg>
-          </div>
+          </button>
           <ul
-            tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">
-              <NavLink>Home</NavLink>
+            <li>
+              <NavLink to="/" className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">
+                Home
+              </NavLink>
             </li>
-            <li className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">
-              <NavLink>Services</NavLink>
+            <li>
+              <NavLink to="/services" className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">
+                Services
+              </NavLink>
             </li>
-            <li className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">
-              <NavLink>My Profile</NavLink>
+            <li>
+              <NavLink to="/auth/myprofile" className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">
+                My Profile
+              </NavLink>
             </li>
           </ul>
         </div>
-        <a className="flex items-center gap-2 btn btn-ghost normal-case text-xl">
-          <img
-            src={logo}
-            alt="WarmPaws Logo"
-            className="w-10 h-10 rounded-full"
-          />
-          <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">
+
+        <Link to="/" className="flex items-center gap-2 btn btn-ghost normal-case text-xl">
+          <img src={logo} alt="WarmPaws Logo" className="w-10 h-10 rounded-full hidden md:block " />
+          <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500 ">
             WarmPaws
           </span>
-        </a>
+        </Link>
       </div>
+
+      {/* Center: Desktop Menu */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 ">
-          <li className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">
-            <NavLink to="/">Home</NavLink>
+        <ul className="menu menu-horizontal px-1">
+          <li>
+            <NavLink to="/" className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">
+              Home
+            </NavLink>
           </li>
-          <li className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">
-            <NavLink to="/services">Services</NavLink>
+          <li>
+            <NavLink to="/services" className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">
+              Services
+            </NavLink>
           </li>
-          <li className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">
-            <NavLink to="/auth/myprofile">My Profile</NavLink>
+          <li>
+            <NavLink to="/auth/myprofile" className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">
+              My Profile
+            </NavLink>
           </li>
         </ul>
       </div>
+
+      {/* Right: Avatar + Auth Buttons */}
       <div className="navbar-end space-x-3">
-        <div className="relative group">
+        <div className="relative group hidden md:block">
           <img
             className="w-10 h-10 rounded-full border-2 border-orange-400 cursor-pointer"
-            src={user ? user.photoURL : userIcon}
+            src={user?.photoURL || userIcon}
             alt="User Avatar"
           />
           {user && (
@@ -109,6 +117,7 @@ const NavBar = () => {
       </div>
     </div>
   );
+
 };
 
 export default NavBar;

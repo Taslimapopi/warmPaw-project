@@ -33,6 +33,7 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleLogIn()
       .then((result) => {
+        navigate(`${location.state? location.state : '/'}`)
         toast.success('Successfully logged in')
       })
       .catch((error) => {
