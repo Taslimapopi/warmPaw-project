@@ -5,7 +5,7 @@ import { updateProfile } from "firebase/auth";
 
 const SignUp = () => {
   const { createUser, setUser } = use(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -15,19 +15,30 @@ const SignUp = () => {
     const password = form.password.value;
     const photoURL = form.photo.value;
 
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const isLongEnough = password.length >= 6;
+
+    if (!hasUppercase || !hasLowercase || !isLongEnough) {
+      alert(
+        "❌ Password must contain:\n- At least one uppercase letter\n- At least one lowercase letter\n- Minimum 6 characters"
+      );
+      return;
+    }
+
     console.log(displayName, email, photoURL, password);
     createUser(email, password)
       .then((result) => {
         const user = result.user;
         updateProfile(user, { displayName, photoURL })
           .then(() => {
-            alert('profile updated')
           })
           .catch((error) => {
-            alert(error)
+            alert(error);
           });
+        alert('successfully completeed signup')
         setUser(user);
-        navigate('/')
+        navigate("/");
       })
       .catch((error) => {
         const errorCode = error.code;

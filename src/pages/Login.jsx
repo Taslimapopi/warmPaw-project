@@ -1,9 +1,12 @@
-import React, { use, useRef } from "react";
+import React, { use, useRef, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../Provider/Authprovider";
 import { useNavigate } from "react-router";
+import { FaRegEye } from "react-icons/fa";
+import { IoEyeOffSharp } from "react-icons/io5";
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false)
   const emailRef = useRef();
   const { logIn, googleLogIn } = use(AuthContext);
   const handleLogin = (e) => {
@@ -39,6 +42,11 @@ const Login = () => {
     });
   };
 
+  const handleShowPassword = (e) =>{
+    e.preventDefault();
+    setShowPassword(!showPassword)
+  }
+
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -57,14 +65,24 @@ const Login = () => {
                 placeholder="Email"
                 required
               />
-              <label className="label">Password</label>
+              <div className="relative">
+                <label className="label">Password</label>
               <input
-                type="password"
+                type={showPassword? 'text' : 'password'}
                 name="password"
                 className="input"
                 placeholder="Password"
                 required
               />
+              <button onClick={handleShowPassword} className="btn btn-xs absolute right-5 top-6">
+                {
+                  showPassword? <IoEyeOffSharp />: <FaRegEye /> 
+                }
+              </button>
+              
+
+              </div>
+              
               <div>
                 <button
                   type="button"

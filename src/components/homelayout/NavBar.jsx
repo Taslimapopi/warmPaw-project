@@ -2,16 +2,17 @@ import React, { use } from "react";
 import logo from "../../assets/image.png";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../Provider/Authprovider";
+import userIcon from "../../assets/user.png";
 
 const NavBar = () => {
   const { user, logOut } = use(AuthContext);
   const handleLogout = () => {
     logOut()
       .then(() => {
-        alert('Sign-out successful.')
+        alert("Sign-out successful.");
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
       });
   };
   return (
@@ -74,19 +75,27 @@ const NavBar = () => {
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
-        {user ? (
-          <div className="relative group">
-            <button
-              onClick={handleLogout}
-              className="btn font-semibold bg-gradient-to-r from-orange-500 to-yellow-500 text-white"
-            >
-              LogOut
-            </button>
-            <span className="absolute left-1/2 -translate-x-1/2 bottom-12 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-sm px-3 py-1 rounded-md transition-all duration-300 whitespace-nowrap shadow-md">
+      <div className="navbar-end space-x-3">
+        <div className="relative group">
+          <img
+            className="w-10 h-10 rounded-full border-2 border-orange-400 cursor-pointer"
+            src={user ? user.photoURL : userIcon}
+            alt="User Avatar"
+          />
+          {user && (
+            <span className="absolute left-1/2 -translate-x-1/2 bottom-12 opacity-0 group-hover:opacity-100 bg-gray-800 text-white text-sm px-3 py-1 rounded-md transition-all duration-300 whitespace-nowrap shadow-md z-10">
               {user.email}
             </span>
-          </div>
+          )}
+        </div>
+
+        {user ? (
+          <button
+            onClick={handleLogout}
+            className="btn font-semibold bg-gradient-to-r from-orange-500 to-yellow-500 text-white"
+          >
+            LogOut
+          </button>
         ) : (
           <Link
             to="/auth/login"
