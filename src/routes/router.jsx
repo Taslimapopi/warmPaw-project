@@ -67,6 +67,10 @@ const router = createBrowserRouter([
     path: "/service-details/:id",
     element:<PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute> ,
   },
+  {
+    path:'/services',
+    element: <Allservices></Allservices>
+  }
 ]);
 
 export default router;

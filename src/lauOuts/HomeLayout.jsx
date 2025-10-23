@@ -5,6 +5,9 @@ import Categories from '../components/homelayout/Categories';
 import Services from '../components/homelayout/Services';
 import { Outlet } from 'react-router';
 import Footer from '../components/Footer';
+import Veteran from '../components/Veteran';
+import WinterCareTips from '../components/homelayout/WinterCareTips';
+import PhotoGallery from '../components/homelayout/Photogallery';
 
 
 const HomeLayout = () => {
@@ -17,17 +20,19 @@ const HomeLayout = () => {
             <main>
                 <HeroSection></HeroSection>
                 <Categories></Categories>
-                <div className='w-11/12 grid grid-cols-12 *:border mx-auto'>
+                <div className='w-11/12 grid grid-cols-12 mx-auto'>
                 <div className='col-span-9' >
                     <Outlet></Outlet>
                 
 
                 </div>
                 <div className='col-span-3'>
-                    veterans tips
+                    <Veteran></Veteran>
                 </div>
 
                 </div>
+                <WinterCareTips></WinterCareTips>
+                <PhotoGallery></PhotoGallery>
             </main>
             <footer>
                 <Footer></Footer>

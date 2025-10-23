@@ -1,4 +1,5 @@
 import React from "react";
+import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { Link } from "react-router";
 
 const ServiceCard = ({ service }) => {
@@ -25,15 +26,23 @@ const ServiceCard = ({ service }) => {
 
         {/* Rating */}
         <div className="flex justify-center items-center gap-1 mb-3">
-          
           <span className="text-sm font-medium text-gray-600">
+            <div className="flex space-x-1 text-yellow-500">
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStarHalfAlt />
+              
+            </div>
+
             {service.rating}
           </span>
         </div>
 
         {/* Button */}
-        <Link to={`service-details/${service.serviceId}`}
-          
+        <Link
+          to={`service-details/${service.serviceId}`}
           className="inline-block px-5 py-2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-semibold hover:scale-105 transition-transform duration-300 shadow-md"
         >
           View Details
