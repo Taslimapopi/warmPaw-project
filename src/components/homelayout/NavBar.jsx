@@ -18,7 +18,7 @@ const NavBar = () => {
       });
   };
    return (
-    <div className="navbar bg-base-200 bg-blue-200 shadow-sm px-4">
+    <div className="navbar bg-base-200 bg-[#B0C4DE]/90 shadow shadow-sm px-4">
       {/* Left: Logo + Mobile Dropdown */}
       <div className="navbar-start">
         <div className="dropdown">

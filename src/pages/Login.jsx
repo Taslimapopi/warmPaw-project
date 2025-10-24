@@ -61,8 +61,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-[#E0EAFC] to-[#CFDEF3]">
+      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl ">
         <h2 className="font-semibold text-3xl text-center mt-5 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500 ">
           Login your account
         </h2>
@@ -156,6 +156,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+      
     </div>
   );
 };
