@@ -3,11 +3,14 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/Authprovider";
 import { updateProfile } from "firebase/auth";
 import toast from "react-hot-toast";
+import { FaRegEye } from "react-icons/fa";
+import { IoEyeOffSharp } from "react-icons/io5";
 
 const SignUp = () => {
   const { createUser, setUser } = use(AuthContext);
   const navigate = useNavigate();
-  const [error, setError] = useState('')
+  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -17,15 +20,16 @@ const SignUp = () => {
     const password = form.password.value;
     const photoURL = form.photo.value;
 
-    setError('')
+    setError("");
 
     const hasUppercase = /[A-Z]/.test(password);
     const hasLowercase = /[a-z]/.test(password);
     const isLongEnough = password.length >= 6;
 
     if (!hasUppercase || !hasLowercase || !isLongEnough) {
-      
-      setError("❌ Password must contain:\n- At least one uppercase letter\n- At least one lowercase letter\n- Minimum 6 characters")
+      setError(
+        "❌ Password must contain:\n- At least one uppercase letter\n- At least one lowercase letter\n- Minimum 6 characters"
+      );
       return;
     }
 
@@ -33,20 +37,24 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         updateProfile(user, { displayName, photoURL })
-          .then(() => {
-          })
+          .then(() => {})
           .catch((error) => {
             toast.error(error);
           });
-        toast.success('successfully completed signup')
+        toast.success("successfully completed signup");
         setUser(user);
         navigate("/");
       })
       .catch((error) => {
-    
-      alert(error);
+        alert(error);
       });
   };
+
+  const handleShowPassword = (e) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
+  };
+
 
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -85,16 +93,35 @@ const SignUp = () => {
                 required
               />
               {/* password */}
-              <label className="label">Password</label>
+              {/* <label className="label">Password</label>
               <input
                 type="password"
                 name="password"
                 className="input"
                 placeholder="Password"
                 required
-              />
+              /> */}
+              <div className="relative">
+                <label className="label z-5 text-left">Password</label>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  className="input"
+                  placeholder="Password"
+                  required
+                />
+                <button
+                  onClick={handleShowPassword}
+                  className="btn btn-xs absolute right-5 top-6 z-10"
+                >
+                  {showPassword ? <IoEyeOffSharp /> : <FaRegEye />}
+                </button>
+              </div>
               {/* register button */}
-              <button type="submit" className="btn btn-neutral mt-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-white border-[#e5e5e5]">
+              <button
+                type="submit"
+                className="btn btn-neutral mt-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-white border-[#e5e5e5]"
+              >
                 Register
               </button>
               <p className="font-semibold text-center pt-5">

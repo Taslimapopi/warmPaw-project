@@ -45,7 +45,7 @@ const ServiceDetails = () => {
           {singleService.description}
         </p>
 
-        <div className="flex justify-around items-center">
+        <div className="flex flex-col md:flex-row justify-around items-center">
           <div className="mt-4">
             <p>
               <strong>Provider:</strong> {singleService.providerName}

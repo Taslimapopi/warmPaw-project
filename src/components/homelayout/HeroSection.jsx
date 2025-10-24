@@ -34,6 +34,7 @@ const HeroSection = () => {
             className="rounded-xl shadow-lg"
           >
             {[
+              "https://images.pexels.com/photos/34397002/pexels-photo-34397002.jpeg",
               "https://images.pexels.com/photos/33719752/pexels-photo-33719752.jpeg",
               "https://i.ibb.co.com/C5yWqkp8/Snow-Proof-Coat-Nail-Trimming-Package.jpg",
               "https://i.ibb.co.com/4cm7mDh/Thermal-Pet-Bedding-Sleep-Setup.webp",
