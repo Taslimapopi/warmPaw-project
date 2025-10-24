@@ -21,7 +21,7 @@ const HomeLayout = () => {
             <main>
                 <HeroSection></HeroSection>
                 <Categories></Categories>
-                <div className='md:w-11/12 grid grid-cols-12 mx-auto'>
+                <div className='md:w-11/12 grid grid-cols-1 md:grid md:grid-cols-12 mx-auto'>
                 <div className='col-span-9' >
                     <Outlet></Outlet>
                 

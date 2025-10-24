@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/Authprovider";
 import { updateProfile } from "firebase/auth";
@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 const SignUp = () => {
   const { createUser, setUser } = use(AuthContext);
   const navigate = useNavigate();
+  const [error, setError] = useState('')
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -16,14 +17,15 @@ const SignUp = () => {
     const password = form.password.value;
     const photoURL = form.photo.value;
 
+    setError('')
+
     const hasUppercase = /[A-Z]/.test(password);
     const hasLowercase = /[a-z]/.test(password);
     const isLongEnough = password.length >= 6;
 
     if (!hasUppercase || !hasLowercase || !isLongEnough) {
-      toast.error(
-        "❌ Password must contain:\n- At least one uppercase letter\n- At least one lowercase letter\n- Minimum 6 characters"
-      );
+      
+      setError("❌ Password must contain:\n- At least one uppercase letter\n- At least one lowercase letter\n- Minimum 6 characters")
       return;
     }
 
@@ -41,17 +43,15 @@ const SignUp = () => {
         navigate("/");
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
     
-        toast.error("errorcode");
+      alert(error);
       });
   };
 
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-        <h2 className="font-semibold text-2xl text-center mt-5">
+        <h2 className="font-semibold text-2xl text-center mt-5 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500 ">
           Register your account
         </h2>
         <div className="card-body">
@@ -94,7 +94,7 @@ const SignUp = () => {
                 required
               />
               {/* register button */}
-              <button type="submit" className="btn btn-neutral mt-4">
+              <button type="submit" className="btn btn-neutral mt-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-white border-[#e5e5e5]">
                 Register
               </button>
               <p className="font-semibold text-center pt-5">
@@ -105,6 +105,7 @@ const SignUp = () => {
               </p>
             </fieldset>
           </form>
+          <p className="text-red-600">{error}</p>
         </div>
       </div>
     </div>

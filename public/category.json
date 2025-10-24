@@ -2,10 +2,10 @@
   { "id": 0, "category": "All Services" },
   { "id": 1, "category": "Clothing" },
   { "id": 2, "category": "Grooming" },
-  { "id": 3, "category": "Health" },
   { "id": 4, "category": "Nutrition" },
   { "id": 5, "category": "Training" },
   { "id": 6, "category": "Shelter" },
   { "id": 7, "category": "Wellness" },
   { "id": 8, "category": "Comfort" }
 ]
+

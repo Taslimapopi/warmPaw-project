@@ -11,7 +11,7 @@ const Allservices = () => {
     useEffect(() => {
       fetch("/services.json")
         .then((res) => res.json())
-        .then((data) => setServices(data.slice(0, 6)));
+        .then((data) => setServices(data));
     }, []);
 
     const styles = useSpring({

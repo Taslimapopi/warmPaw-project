@@ -6,12 +6,15 @@ import { FaRegEye } from "react-icons/fa";
 import { IoEyeOffSharp } from "react-icons/io5";
 import toast from "react-hot-toast";
 
+
 const Login = () => {
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
   const emailRef = useRef();
   const { logIn, googleLogIn } = use(AuthContext);
-  const location = useLocation()
+  const location = useLocation();
+  const navigate = useNavigate();
 
+  
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -19,11 +22,10 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     logIn(email, password)
-    .then((result) => {
-      const user = result.user
-
-        navigate(`${location.state? location.state : '/'}`)
-        toast.success('Successfully logged in')
+      .then((result) => {
+        const user = result.user;
+        navigate(`${location.state ? location.state : "/"}`);
+        toast.success("Successfully logged in");
       })
       .catch((error) => {
         toast.error(error);
@@ -33,38 +35,35 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleLogIn()
       .then((result) => {
-        navigate(`${location.state? location.state : '/'}`)
-        toast.success('Successfully logged in')
+        navigate(`${location.state ? location.state : "/"}`);
+        toast.success("Successfully logged in");
       })
       .catch((error) => {
-        toast.error(error)
+        toast.error(error);
       });
   };
 
-  const navigate = useNavigate();
-
   const handleForgetPassword = () => {
     const email = emailRef.current.value;
-  
+
     if (!email) {
       toast("Please enter your email before proceeding!");
       return;
     }
-
     navigate("/auth/forgetpassword", {
-      state: { email }, 
+      state: { email },
     });
   };
 
-  const handleShowPassword = (e) =>{
+  const handleShowPassword = (e) => {
     e.preventDefault();
-    setShowPassword(!showPassword)
-  }
+    setShowPassword(!showPassword);
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-        <h2 className="font-semibold text-2xl text-center mt-5">
+        <h2 className="font-semibold text-3xl text-center mt-5 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500 ">
           Login your account
         </h2>
         <div className="card-body">
@@ -81,22 +80,21 @@ const Login = () => {
               />
               <div className="relative">
                 <label className="label z-5 text-left">Password</label>
-              <input
-                type={showPassword? 'text' : 'password'}
-                name="password"
-                className="input"
-                placeholder="Password"
-                required
-              />
-              <button onClick={handleShowPassword} className="btn btn-xs absolute right-5 top-6 z-10">
-                {
-                  showPassword? <IoEyeOffSharp />: <FaRegEye /> 
-                }
-              </button>
-              
-
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  className="input"
+                  placeholder="Password"
+                  required
+                />
+                <button
+                  onClick={handleShowPassword}
+                  className="btn btn-xs absolute right-5 top-6 z-10"
+                >
+                  {showPassword ? <IoEyeOffSharp /> : <FaRegEye />}
+                </button>
               </div>
-              
+
               <div>
                 <button
                   type="button"
@@ -112,7 +110,7 @@ const Login = () => {
                 type="submit"
                 className="btn btn-accent text-white font-semibold mt-4"
               >
-                Login
+                Login with Email
               </button>
               <Link
                 to="/"
