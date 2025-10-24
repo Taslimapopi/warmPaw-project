@@ -17,7 +17,7 @@ const Footer = () => {
 
         {/* Quick Links */}
         <div>
-          <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
+          <h3 className="text-lg font-semibold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">Quick Links</h3>
           <ul className="space-y-2 text-sm">
             <li><Link to="/" className="hover:text-orange-500">Home</Link></li>
             <li><Link to="/services" className="hover:text-orange-500">Services</Link></li>
@@ -27,11 +27,11 @@ const Footer = () => {
         </div>
 
         {/* Contact & Social */}
-        <div>
-          <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
+        <div className="flex flex-col justify-center items-center">
+          <h3 className="text-lg font-semibold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500">Contact Us</h3>
           <p className="text-sm text-gray-600">Chattogram, Bangladesh</p>
           <p className="text-sm text-gray-600">Email: support@warmpaws.com</p>
-          <div className="flex space-x-4 mt-4 text-orange-500 text-xl">
+          <div className="flex space-x-4 mt-4 text-orange-500 text-xl ">
             <a href="https://facebook.com" target="_blank" rel="noreferrer"><FaFacebookF /></a>
             <a href="https://instagram.com" target="_blank" rel="noreferrer"><FaInstagram /></a>
             <a href="https://twitter.com" target="_blank" rel="noreferrer"><FaTwitter /></a>
