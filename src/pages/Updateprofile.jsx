@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 
 const Updateprofile = () => {
-  const { user } = use(AuthContext);
+  const { user,setUser } = use(AuthContext);
   const navigate = useNavigate()
 
   const handleUpdateProfile = (e) => {
@@ -20,8 +20,10 @@ const Updateprofile = () => {
       photoURL: photoURL,
     })
       .then(() => {
+        setUser(auth.currentUser)
         toast.success("✅ Profile updated successfully!");
         navigate('/auth/myprofile')
+        
       })
       .catch((error) => {
         toast.error("❌ Update failed:", error);
