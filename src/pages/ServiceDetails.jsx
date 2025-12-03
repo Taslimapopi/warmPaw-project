@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import NavBar from "../components/homelayout/NavBar";
 import toast from "react-hot-toast";
+import Footer from "../components/Footer";
 
 const ServiceDetails = () => {
   const [singleService, setSingleService] = useState(null);
@@ -105,6 +106,7 @@ const ServiceDetails = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

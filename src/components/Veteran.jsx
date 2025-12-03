@@ -7,7 +7,7 @@ const Veteran = () => {
         Meet Our Expert Vets
       </h2>
 
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-3 gap-4">
 
         {/* Vet 2 */}
         <div className=" bg-white shadow-lg rounded-lg p-2 text-center">

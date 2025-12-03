@@ -18,24 +18,9 @@ const HomeLayout = () => {
                 <NavBar></NavBar>
                 
             </header>
-            <main>
-                <HeroSection></HeroSection>
-                <Categories></Categories>
-                <div className='md:w-11/12 grid grid-cols-1 md:grid md:grid-cols-12 mx-auto'>
-                <div className='col-span-9' >
-                    <Outlet></Outlet>
-                
-
-                </div>
-                <div className='col-span-3'>
-                    <Veteran></Veteran>
-                </div>
-
-                </div>
-                <WinterCareTips></WinterCareTips>
-                <PhotoGallery></PhotoGallery>
-                <CustomerTestimonials></CustomerTestimonials>
-            </main>
+           <main>
+            <Outlet></Outlet>
+           </main>
             <footer>
                 <Footer></Footer>
             </footer>

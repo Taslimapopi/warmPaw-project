@@ -27,12 +27,12 @@ const Allservices = () => {
 
   return (
 
-    <div className="max-w-6xl mx-auto p-6">
-          <animated.div style={styles} className="text-3xl font-bold mb-6 text-center">
+    <div className="max-w-6xl mx-auto">
+          <animated.div style={styles} className="text-3xl font-bold mt-16 mb-6 text-center">
             🐾 Our All Winter Pet Care Services
         </animated.div>;
     
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {services.map((service) => (
               <ServiceCard key={service.serviceId} service={service} />
             ))}

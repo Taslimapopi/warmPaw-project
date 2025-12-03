@@ -2,7 +2,7 @@ import React from 'react';
 
 const WinterCareTips = () => {
     return (
-        <section className="bg-gradient-to-r from-blue-50 to-blue-100 py-12 px-6 md:px-16 rounded-2xl shadow-md mt-10">
+        <section className="bg-gradient-to-r from-blue-50 to-blue-100 py-12 rounded-2xl shadow-md mt-10">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-blue-700 mb-6 underline underline-offset-8 decoration-yellow-400">
           Winter Care Tips for Pets

@@ -11,6 +11,7 @@ import ForgetPassword from "../pages/ForgetPassword";
 import MyProfile from "../pages/MyProfile";
 import Updateprofile from "../pages/Updateprofile";
 import PrivateRoute from "../Provider/PrivateRoute";
+import BlogPosts from "../pages/BlogPosts";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
         element: <Services></Services>,
         loader: () => fetch("/services.json").then((res) => res.json()),
       },
+      {
+        path:'/blogposts',
+        element: <BlogPosts></BlogPosts>
+      }
     ],
   },
   {
@@ -65,7 +70,7 @@ const router = createBrowserRouter([
 
   {
     path: "/service-details/:id",
-    element:<PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute> ,
+    element:<ServiceDetails></ServiceDetails> ,
   },
   // {
   //   path:'/services',

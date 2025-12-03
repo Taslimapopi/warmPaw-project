@@ -36,6 +36,7 @@ const Authprovider = ({children}) => {
         }
     },[])
 
+
     const authDAta = {
         user,
         setUser,

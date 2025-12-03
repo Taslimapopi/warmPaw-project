@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 const HeroSection = () => {
   return (
     <div className="bg-gradient-to-r from-orange-100 via-pink-100 to-yellow-100 py-8 md:py-12">
-      <section className="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8 px-4 md:px-12">
+      <section className="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8 ">
         {/* ---------- Left Content ---------- */}
         <div className="md:w-1/2">
           <h1 className="text-1xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-800 leading-snug text-center">

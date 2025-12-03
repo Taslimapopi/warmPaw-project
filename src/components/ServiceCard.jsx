@@ -6,7 +6,7 @@ const ServiceCard = ({ service }) => {
   return (
     <div className="bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 rounded-2xl overflow-hidden w-full max-w-xs md:max-w-sm m-2 flex flex-col">
       {/* Image Section */}
-      <div className="relative h-48 md:h-56">
+      <div className="relative  h-48 md:h-48">
         <img
           className="w-full h-full object-cover"
           src={service.image}
@@ -23,9 +23,9 @@ const ServiceCard = ({ service }) => {
           <h3 className="text-lg font-semibold text-gray-800 mb-2">
             {service.serviceName}
           </h3>
-          <p className="text-sm text-gray-500 mb-2 truncate">
+          {/* <p className="text-sm text-gray-500 mb-2 truncate">
             {service.providerEmail}
-          </p>
+          </p> */}
 
           {/* Rating */}
           <div className="flex justify-center items-center gap-1 mb-3">
