@@ -64,7 +64,7 @@ const NavBar = () => {
                   to="/blogposts"
                   className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500"
                 >
-                  My Profile
+                  Blogs
                 </NavLink>
               </li>
             </ul>

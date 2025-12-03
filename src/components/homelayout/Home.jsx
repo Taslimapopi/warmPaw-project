@@ -36,12 +36,13 @@ const Home = () => {
           <div className="">
             <animated.div
               style={styles}
-              className="text-3xl font-bold my-6 text-center"
+              className="hidden md:block md:text-3xl font-bold my-6 text-center"
             >
               🐾 Featured Winter Pet Care Services
             </animated.div>
             ;
-            <div className="grid grid-cols-4 gap-5">
+            <h2 className="md:hidden test-center my-3">🐾 Featured Winter Pet Care Services</h2>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
               {services.map((service) => (
                 <ServiceCard key={service.serviceId} service={service} />
               ))}

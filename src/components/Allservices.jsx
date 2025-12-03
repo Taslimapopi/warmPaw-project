@@ -28,9 +28,11 @@ const Allservices = () => {
   return (
 
     <div className="max-w-6xl mx-auto">
-          <animated.div style={styles} className="text-3xl font-bold mt-16 mb-6 text-center">
+          <animated.div style={styles} className="hidden md:block text-3xl font-bold mt-16 mb-6 text-center">
             🐾 Our All Winter Pet Care Services
         </animated.div>;
+
+        <h2 className="md:hidden test-center my-3">🐾 Our All Pet Care Services</h2>
     
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {services.map((service) => (
